@@ -1,0 +1,914 @@
+[
+  {
+    "surah_id": 1,
+    "surah_name": "আল ফাতিহা",
+    "surah_ayat_number": "৭",
+    "surah_arabic_name": "الفاتحة",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সূচনা"
+  },
+  {
+    "surah_id": 2,
+    "surah_name": "আল বাকারা",
+    "surah_ayat_number": "২৮৬",
+    "surah_arabic_name": "البقرة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "বকনা-বাছুর"
+  },
+  {
+    "surah_id": 3,
+    "surah_name": "আল ইমরান",
+    "surah_ayat_number": "২০০",
+    "surah_arabic_name": "آل عمران",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "ইমরানের পরিবার"
+  },
+  {
+    "surah_id": 4,
+    "surah_name": "আন নিসা",
+    "surah_ayat_number": 176,
+    "surah_arabic_name": "النّساء",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "নারী"
+  },
+  {
+    "surah_id": 5,
+    "surah_name": "আল মায়িদাহ",
+    "surah_ayat_number": "১২০",
+    "surah_arabic_name": "المآئدة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "খাদ্য পরিবেশিত টেবিল"
+  },
+  {
+    "surah_id": 6,
+    "surah_name": "আল আনআম",
+    "surah_ayat_number": "১৬৫",
+    "surah_arabic_name": "الانعام",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "গৃহপালিত পশু"
+  },
+  {
+    "surah_id": 7,
+    "surah_name": "আল আরাফ",
+    "surah_ayat_number": "২০৬",
+    "surah_arabic_name": "الأعراف",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "উচু স্থানসমূহ"
+  },
+  {
+    "surah_id": 8,
+    "surah_name": "আল আনফাল",
+    "surah_ayat_number": "৭৫",
+    "surah_arabic_name": "الأنفال",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "যুদ্ধে-লব্ধ ধনসম্পদ"
+  },
+  {
+    "surah_id": 9,
+    "surah_name": "আত-তাওবাহ্‌",
+    "surah_ayat_number": "১২৯",
+    "surah_arabic_name": "التوبة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "অনুশোচনা"
+  },
+  {
+    "surah_id": 10,
+    "surah_name": "ইউনুস",
+    "surah_ayat_number": "১০৯",
+    "surah_arabic_name": "يونس",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নবী ইউনুস"
+  },
+  {
+    "surah_id": 11,
+    "surah_name": "হুদ",
+    "surah_ayat_number": "১২৩",
+    "surah_arabic_name": "هود",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নবী হুদ"
+  },
+  {
+    "surah_id": 12,
+    "surah_name": "ইউসুফ",
+    "surah_ayat_number": "১১১",
+    "surah_arabic_name": "يوسف",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নবী ইউসুফ"
+  },
+  {
+    "surah_id": 13,
+    "surah_name": "আর-রাদ",
+    "surah_ayat_number": "৪৩",
+    "surah_arabic_name": "الرّعد",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "বজ্রনাদ"
+  },
+  {
+    "surah_id": 14,
+    "surah_name": "ইব্রাহীম",
+    "surah_ayat_number": 52,
+    "surah_arabic_name": "إبراهيم",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "নবী ইব্রাহিম"
+  },
+  {
+    "surah_id": 15,
+    "surah_name": "আল হিজর",
+    "surah_ayat_number": "৯৯",
+    "surah_arabic_name": "الحجر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পাথুরে পাহাড়"
+  },
+  {
+    "surah_id": 16,
+    "surah_name": "আন নাহল",
+    "surah_ayat_number": "১২৮",
+    "surah_arabic_name": "النّحل",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "মৌমাছি"
+  },
+  {
+    "surah_id": 17,
+    "surah_name": "বনী-ইসরাঈল",
+    "surah_ayat_number": "১১১",
+    "surah_arabic_name": "الإسرا",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "ইসরায়েলের সন্তানগণ"
+  },
+  {
+    "surah_id": 18,
+    "surah_name": "আল কাহফ",
+    "surah_ayat_number": "১১০",
+    "surah_arabic_name": "الكهف",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "গুহা"
+  },
+  {
+    "surah_id": 19,
+    "surah_name": "মারইয়াম",
+    "surah_ayat_number": "৯৮",
+    "surah_arabic_name": "مريم",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "মারিয়াম"
+  },
+  {
+    "surah_id": 20,
+    "surah_name": "ত্বোয়া-হা",
+    "surah_ayat_number": "১৩৫",
+    "surah_arabic_name": "طه",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "ত্বোয়া-হা"
+  },
+  {
+    "surah_id": 21,
+    "surah_name": "আল আম্বিয়া",
+    "surah_ayat_number": "১১২",
+    "surah_arabic_name": "الأنبياء",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "নবীগণ"
+  },
+  {
+    "surah_id": 22,
+    "surah_name": "আল হাজ্জ্ব",
+    "surah_ayat_number": "৭৮",
+    "surah_arabic_name": "الحجّ",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "হাজ্জ"
+  },
+  {
+    "surah_id": 23,
+    "surah_name": "আল মু'মিনূন",
+    "surah_ayat_number": "১১৮",
+    "surah_arabic_name": "المؤمنون",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "বিশ্বাসীগণ"
+  },
+  {
+    "surah_id": 24,
+    "surah_name": "আন নূর",
+    "surah_ayat_number": "৬৪",
+    "surah_arabic_name": "النّور",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "আলো"
+  },
+  {
+    "surah_id": 25,
+    "surah_name": "আল ফুরকান",
+    "surah_ayat_number": "৭৭",
+    "surah_arabic_name": "الفرقان",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সত্য মিথ্যার পার্থক্য নির্ধারণকারী গ্রন্থ"
+  },
+  {
+    "surah_id": 26,
+    "surah_name": "আশ শুআরা",
+    "surah_ayat_number": "২২৭",
+    "surah_arabic_name": "الشّعراء",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "কবিগণ"
+  },
+  {
+    "surah_id": 27,
+    "surah_name": "আন নম্‌ল",
+    "surah_ayat_number": "৯৩",
+    "surah_arabic_name": "النّمل",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পিপীলিকা"
+  },
+  {
+    "surah_id": 28,
+    "surah_name": "আল-কাসাস",
+    "surah_ayat_number": "৮৮",
+    "surah_arabic_name": "القصص",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "কাহিনী"
+  },
+  {
+    "surah_id": 29,
+    "surah_name": "আল আনকাবুত",
+    "surah_ayat_number": 69,
+    "surah_arabic_name": "العنكبوت",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "মাকড়সা"
+  },
+  {
+    "surah_id": 30,
+    "surah_name": "আর রুম",
+    "surah_ayat_number": "৬০",
+    "surah_arabic_name": "الرّوم",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "রোমান জাতি"
+  },
+  {
+    "surah_id": 31,
+    "surah_name": "লোক্‌মান",
+    "surah_ayat_number": "৩৪",
+    "surah_arabic_name": "لقمان",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "একজন জ্ঞানী ব্যক্তি"
+  },
+  {
+    "surah_id": 32,
+    "surah_name": "আস সেজদাহ্",
+    "surah_ayat_number": "৩০",
+    "surah_arabic_name": "السّجدة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "সিজদাহ"
+  },
+  {
+    "surah_id": 33,
+    "surah_name": "আল আহ্‌যাব",
+    "surah_ayat_number": "৭৩",
+    "surah_arabic_name": "الْأحزاب",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "জোট"
+  },
+  {
+    "surah_id": 34,
+    "surah_name": "সবা",
+    "surah_ayat_number": "৫৪",
+    "surah_arabic_name": "سبا",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "রানী সাবা"
+  },
+  {
+    "surah_id": 35,
+    "surah_name": "ফাতির",
+    "surah_ayat_number": "৪৫",
+    "surah_arabic_name": "فاطر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "আদি স্রষ্টা"
+  },
+  {
+    "surah_id": 36,
+    "surah_name": "ইয়াসীন",
+    "surah_ayat_number": "৮৩",
+    "surah_arabic_name": "يس",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "ইয়াসীন"
+  },
+  {
+    "surah_id": 37,
+    "surah_name": "আস ছাফ্‌ফাত",
+    "surah_ayat_number": "১৮২",
+    "surah_arabic_name": "الصّافات",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সারিবদ্ধভাবে দাড়ানো"
+  },
+  {
+    "surah_id": 38,
+    "surah_name": "ছোয়াদ",
+    "surah_ayat_number": "৮৮",
+    "surah_arabic_name": "ص",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "আরবি বর্ণ"
+  },
+  {
+    "surah_id": 39,
+    "surah_name": "আয্‌-যুমার",
+    "surah_ayat_number": "৭৫",
+    "surah_arabic_name": "الزّمر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "দল-বদ্ধ জনতা"
+  },
+  {
+    "surah_id": 40,
+    "surah_name": "আল মু'মিন",
+    "surah_ayat_number": "৮৫",
+    "surah_arabic_name": "غافر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "বিশ্বাসী"
+  },
+  {
+    "surah_id": 41,
+    "surah_name": "হা-মীম সেজদাহ্‌",
+    "surah_ayat_number": "৫৪",
+    "surah_arabic_name": "فصّلت",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সুস্পষ্ট বিবরণ"
+  },
+  {
+    "surah_id": 42,
+    "surah_name": "আশ্‌-শূরা",
+    "surah_ayat_number": "পরামর্শ",
+    "surah_arabic_name": "الشّورى",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পরামর্শ"
+  },
+  {
+    "surah_id": 43,
+    "surah_name": "আয্‌-যুখরুফ",
+    "surah_ayat_number": "৮৯",
+    "surah_arabic_name": "الزّخرف",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সোনাদানা"
+  },
+  {
+    "surah_id": 44,
+    "surah_name": "আদ-দোখান",
+    "surah_ayat_number": "৫৯",
+    "surah_arabic_name": "الدّخان",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "ধোঁয়া"
+  },
+  {
+    "surah_id": 45,
+    "surah_name": "আল জাসিয়াহ",
+    "surah_ayat_number": "৩৭",
+    "surah_arabic_name": "الجاثية",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নতজানু"
+  },
+  {
+    "surah_id": 46,
+    "surah_name": "আল আহ্‌ক্বাফ",
+    "surah_ayat_number": "৩৫",
+    "surah_arabic_name": "الأحقاف",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "বালুর পাহাড়"
+  },
+  {
+    "surah_id": 47,
+    "surah_name": "মুহাম্মদ",
+    "surah_ayat_number": "৩৮",
+    "surah_arabic_name": "محمّد",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "নবী মুহাম্মদ"
+  },
+  {
+    "surah_id": 48,
+    "surah_name": "আল ফাত্‌হ",
+    "surah_ayat_number": "২৯",
+    "surah_arabic_name": "الفتح",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "বিজয়"
+  },
+  {
+    "surah_id": 49,
+    "surah_name": "আল হুজুরাত",
+    "surah_ayat_number": "১৮",
+    "surah_arabic_name": "الحجرات",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "বাসগৃহসমূূহ"
+  },
+  {
+    "surah_id": 50,
+    "surah_name": "ক্বাফ",
+    "surah_ayat_number": "৪৫",
+    "surah_arabic_name": "ق",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "আরবি বর্ণ ক্বাফ"
+  },
+  {
+    "surah_id": 51,
+    "surah_name": "আয যারিয়াত",
+    "surah_ayat_number": "৬০",
+    "surah_arabic_name": "الذّاريات",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "বিক্ষেপকারী বাতাস"
+  },
+  {
+    "surah_id": 52,
+    "surah_name": "আত তুর",
+    "surah_ayat_number": "৪৯",
+    "surah_arabic_name": "الطّور",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "পাহাড়"
+  },
+  {
+    "surah_id": 53,
+    "surah_name": "আন-নাজম",
+    "surah_ayat_number": "৬২",
+    "surah_arabic_name": "النّجْم",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "তারা"
+  },
+  {
+    "surah_id": 54,
+    "surah_name": "আল ক্বামার",
+    "surah_ayat_number": "৫৫",
+    "surah_arabic_name": "القمر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "চন্দ্র"
+  },
+  {
+    "surah_id": 55,
+    "surah_name": "আর রহমান",
+    "surah_ayat_number": "৭৮",
+    "surah_arabic_name": "الرّحْمن",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "অনন্ত করুণাময়"
+  },
+  {
+    "surah_id": 56,
+    "surah_name": "আল ওয়াকিয়াহ",
+    "surah_ayat_number": "৯৬",
+    "surah_arabic_name": "الواقعة",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নিশ্চিত ঘটনা"
+  },
+  {
+    "surah_id": 57,
+    "surah_name": "আল হাদীদ",
+    "surah_ayat_number": "২৯",
+    "surah_arabic_name": "الحديد",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "লোহা"
+  },
+  {
+    "surah_id": 58,
+    "surah_name": "আল-মুজাদালাহ",
+    "surah_ayat_number": "২২",
+    "surah_arabic_name": "المجادلة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "অনুযোগকারিণী"
+  },
+  {
+    "surah_id": 59,
+    "surah_name": "আল-হাশর",
+    "surah_ayat_number": "২৪",
+    "surah_arabic_name": "الحشْر",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "সমাবেশ"
+  },
+  {
+    "surah_id": 60,
+    "surah_name": "আল-মুম্তাহিনাহ",
+    "surah_ayat_number": "১৩",
+    "surah_arabic_name": "الممتحنة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "নারী"
+  },
+  {
+    "surah_id": 61,
+    "surah_name": "আস-সাফ",
+    "surah_ayat_number": "১৪",
+    "surah_arabic_name": "الصّفّ",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "সারবন্দী সৈন্যদল"
+  },
+  {
+    "surah_id": 62,
+    "surah_name": "আল-জুমুআ",
+    "surah_ayat_number": "১১",
+    "surah_arabic_name": "الجمعة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "শুক্রবার"
+  },
+  {
+    "surah_id": 63,
+    "surah_name": "আল-মুনাফিকুন",
+    "surah_ayat_number": "১১",
+    "surah_arabic_name": "المنافقون",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "মুনাফিক"
+  },
+  {
+    "surah_id": 64,
+    "surah_name": "আত-তাগাবুন",
+    "surah_ayat_number": "১৮",
+    "surah_arabic_name": "التّغابن",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "মোহ অপসারণ"
+  },
+  {
+    "surah_id": 65,
+    "surah_name": "আত-তালাক",
+    "surah_ayat_number": "১২",
+    "surah_arabic_name": "الطّلاق",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "তালাক"
+  },
+  {
+    "surah_id": 66,
+    "surah_name": "আত-তাহরীম",
+    "surah_ayat_number": "১২",
+    "surah_arabic_name": "التّحريم",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "নিষিদ্ধকরণ"
+  },
+  {
+    "surah_id": 67,
+    "surah_name": "আল-মুলক",
+    "surah_ayat_number": "৩০",
+    "surah_arabic_name": "الملك",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সার্বভৌম কর্তৃত্ব"
+  },
+  {
+    "surah_id": 68,
+    "surah_name": "আল-কলম",
+    "surah_ayat_number": "৫২",
+    "surah_arabic_name": "القلم",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "কলম"
+  },
+  {
+    "surah_id": 69,
+    "surah_name": "আল-হাক্কাহ",
+    "surah_ayat_number": "৫২",
+    "surah_arabic_name": "الحآقّة",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নিশ্চিত সত্য"
+  },
+  {
+    "surah_id": 70,
+    "surah_name": "আল-মাআরিজ",
+    "surah_ayat_number": "৪৪",
+    "surah_arabic_name": "المعارج",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "উন্নয়নের সোপান"
+  },
+  {
+    "surah_id": 71,
+    "surah_name": "নূহ",
+    "surah_ayat_number": "২৮",
+    "surah_arabic_name": "نوح",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নূহ"
+  },
+  {
+    "surah_id": 72,
+    "surah_name": "আল-জিন",
+    "surah_ayat_number": "২৮",
+    "surah_arabic_name": "الجنّ",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "জ্বিন সম্প্রদায়"
+  },
+  {
+    "surah_id": 73,
+    "surah_name": "আল মুজাম্মিল",
+    "surah_ayat_number": "২০",
+    "surah_arabic_name": "المزّمّل",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "বস্ত্র আচ্ছাদনকারী"
+  },
+  {
+    "surah_id": 74,
+    "surah_name": "আল মুদ্দাস্সির",
+    "surah_ayat_number": "৫৬",
+    "surah_arabic_name": "المدّشّر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পোশাক পরিহিত"
+  },
+  {
+    "surah_id": 75,
+    "surah_name": "আল-ক্বিয়ামাহ",
+    "surah_ayat_number": "৪০",
+    "surah_arabic_name": "القيامة",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পুনরুত্থান"
+  },
+  {
+    "surah_id": 76,
+    "surah_name": "আদ-দাহর",
+    "surah_ayat_number": "৩১",
+    "surah_arabic_name": "الدَّهْرِ",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "মানুষ"
+  },
+  {
+    "surah_id": 77,
+    "surah_name": "আল-মুরসালাত",
+    "surah_ayat_number": "৫০",
+    "surah_arabic_name": "المرسلت",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "প্রেরিত পুরুষবৃন্দ"
+  },
+  {
+    "surah_id": 78,
+    "surah_name": "আন নাবা",
+    "surah_ayat_number": "৪০",
+    "surah_arabic_name": "النّبا",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "মহাসংবাদ"
+  },
+  {
+    "surah_id": 79,
+    "surah_name": "আন নাযিয়াত",
+    "surah_ayat_number": "৪৬",
+    "surah_arabic_name": "النّزعت",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "প্রচেষ্টাকারী"
+  },
+  {
+    "surah_id": 80,
+    "surah_name": "আবাসা",
+    "surah_ayat_number": "৪২",
+    "surah_arabic_name": "عبس",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "তিনি ভ্রুকুটি করলেন"
+  },
+  {
+    "surah_id": 81,
+    "surah_name": "আত-তাকভীর",
+    "surah_ayat_number": "২৯",
+    "surah_arabic_name": "التّكوير",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "অন্ধকারাচ্ছন্ন"
+  },
+  {
+    "surah_id": 82,
+    "surah_name": "আল-ইনফিতার",
+    "surah_ayat_number": "১৯",
+    "surah_arabic_name": "الانفطار",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "বিদীর্ণ করা"
+  },
+  {
+    "surah_id": 83,
+    "surah_name": "আত মুত্বাফ্‌ফিফীন",
+    "surah_ayat_number": "৩৬",
+    "surah_arabic_name": "المطفّفين",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "প্রতারকগণ"
+  },
+  {
+    "surah_id": 84,
+    "surah_name": "আল ইন‌শিকাক",
+    "surah_ayat_number": "২৫",
+    "surah_arabic_name": "الانشقاق",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "খন্ড-বিখন্ড করণ"
+  },
+  {
+    "surah_id": 85,
+    "surah_name": "আল-বুরুজ",
+    "surah_ayat_number": "২২",
+    "surah_arabic_name": "البروج",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নক্ষত্রপুঞ্জ"
+  },
+  {
+    "surah_id": 86,
+    "surah_name": "আত-তারিক্ব",
+    "surah_ayat_number": "১৭",
+    "surah_arabic_name": "الطّارق",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "রাতের আগন্তুক"
+  },
+  {
+    "surah_id": 87,
+    "surah_name": "আল আ'লা",
+    "surah_ayat_number": "১৯",
+    "surah_arabic_name": "الأعلى",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সর্বোর্ধ্ব"
+  },
+  {
+    "surah_id": 88,
+    "surah_name": "আল গাশিয়াহ্‌",
+    "surah_ayat_number": "২৬",
+    "surah_arabic_name": "الغاشية",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "বিহ্বলকর ঘটনা"
+  },
+  {
+    "surah_id": 89,
+    "surah_name": "আল ফাজ্‌র",
+    "surah_ayat_number": "৩০",
+    "surah_arabic_name": "الفجر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "ভোরবেলা"
+  },
+  {
+    "surah_id": 90,
+    "surah_name": "আল বালাদ",
+    "surah_ayat_number": "২০",
+    "surah_arabic_name": "البلد",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "নগর"
+  },
+  {
+    "surah_id": 91,
+    "surah_name": "আশ-শাম্‌স",
+    "surah_ayat_number": "১৫",
+    "surah_arabic_name": "الشّمس",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সূর্য্য"
+  },
+  {
+    "surah_id": 92,
+    "surah_name": "আল লাইল",
+    "surah_ayat_number": "২১",
+    "surah_arabic_name": "الليل",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "রাত্রি"
+  },
+  {
+    "surah_id": 93,
+    "surah_name": "আদ-দুহা",
+    "surah_ayat_number": "১১",
+    "surah_arabic_name": "الضحى",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পূর্বাহ্নের সূর্যকিরণ"
+  },
+  {
+    "surah_id": 94,
+    "surah_name": "আল ইন্শিরাহ",
+    "surah_ayat_number": "৮",
+    "surah_arabic_name": "الشرح",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "বক্ষ প্রশস্তকরণ"
+  },
+  {
+    "surah_id": 95,
+    "surah_name": "ত্বীন",
+    "surah_ayat_number": "৮",
+    "surah_arabic_name": "التين",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "ডুমুর"
+  },
+  {
+    "surah_id": 96,
+    "surah_name": "আলাক্ব",
+    "surah_ayat_number": "১৯",
+    "surah_arabic_name": "العلق",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "রক্তপিন্ড"
+  },
+  {
+    "surah_id": 97,
+    "surah_name": "ক্বদর",
+    "surah_ayat_number": "৫",
+    "surah_arabic_name": "القدر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পরিমাণ"
+  },
+  {
+    "surah_id": 98,
+    "surah_name": "বাইয়্যিনাহ",
+    "surah_ayat_number": "৮",
+    "surah_arabic_name": "البينة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "সুস্পষ্ট প্রমাণ"
+  },
+  {
+    "surah_id": 99,
+    "surah_name": "যিলযাল",
+    "surah_ayat_number": "৮",
+    "surah_arabic_name": "الزلزلة",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "ভূমিকম্প"
+  },
+  {
+    "surah_id": 100,
+    "surah_name": "আল আদিয়াত",
+    "surah_ayat_number": "১১",
+    "surah_arabic_name": "العاديات",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "অভিযানকারী"
+  },
+  {
+    "surah_id": 101,
+    "surah_name": "ক্বারিয়াহ",
+    "surah_ayat_number": "১১",
+    "surah_arabic_name": "القارعة",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "মহাসংকট"
+  },
+  {
+    "surah_id": 102,
+    "surah_name": "তাকাসুর",
+    "surah_ayat_number": "৮",
+    "surah_arabic_name": "التكاثر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "প্রাচুর্যের প্রতিযোগিতা"
+  },
+  {
+    "surah_id": 103,
+    "surah_name": "আছর",
+    "surah_ayat_number": "৩",
+    "surah_arabic_name": "العصر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "অপরাহ্ন"
+  },
+  {
+    "surah_id": 104,
+    "surah_name": "হুমাযাহ",
+    "surah_ayat_number": "৯",
+    "surah_arabic_name": "الهمزة",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "পরনিন্দাকারী"
+  },
+  {
+    "surah_id": 105,
+    "surah_name": "ফীল",
+    "surah_ayat_number": "৫",
+    "surah_arabic_name": "الفيل",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "হাতি"
+  },
+  {
+    "surah_id": 106,
+    "surah_name": "কুরাইশ",
+    "surah_ayat_number": "৪",
+    "surah_arabic_name": "قريش",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "কুরাইশ গোত্র"
+  },
+  {
+    "surah_id": 107,
+    "surah_name": "মাউন",
+    "surah_ayat_number": "৭",
+    "surah_arabic_name": "الماعون",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "সাহায্য"
+  },
+  {
+    "surah_id": 108,
+    "surah_name": "কাউসার",
+    "surah_ayat_number": "৩",
+    "surah_arabic_name": "الكوثر",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "প্রাচুর্য"
+  },
+  {
+    "surah_id": 109,
+    "surah_name": "কাফিরুন",
+    "surah_ayat_number": "৬",
+    "surah_arabic_name": "الكافرون",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "অস্বীকারকারীগণ"
+  },
+  {
+    "surah_id": 110,
+    "surah_name": "নাসর",
+    "surah_ayat_number": "৩",
+    "surah_arabic_name": "النصر",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "সাহায্য"
+  },
+  {
+    "surah_id": 111,
+    "surah_name": "লাহাব",
+    "surah_ayat_number": "৫",
+    "surah_arabic_name": "المسد",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "জ্বলন্ত অঙ্গার"
+  },
+  {
+    "surah_id": 112,
+    "surah_name": "আল-ইখলাস",
+    "surah_ayat_number": "৪",
+    "surah_arabic_name": "الإخلاص",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "একনিষ্ঠতা"
+  },
+  {
+    "surah_id": 113,
+    "surah_name": "আল-ফালাক",
+    "surah_ayat_number": "৫",
+    "surah_arabic_name": "الفلق",
+    "surah_makki_or_madina": "মদীনা",
+    "surah_name_meaning": "নিশিভোর"
+  },
+  {
+    "surah_id": 114,
+    "surah_name": "আন-নাস",
+    "surah_ayat_number": "৬",
+    "surah_arabic_name": "الناس",
+    "surah_makki_or_madina": "মক্কা",
+    "surah_name_meaning": "মানবজাতি"
+  }
+]
