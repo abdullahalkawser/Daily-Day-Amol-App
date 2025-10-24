@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
   greeting: { 
     color: '#FFFFFF', 
     fontWeight: '400',
-    marginBottom: '2%' 
+    marginBottom: '3%' 
   },
   userName: { 
     color: '#FFFFFF', 

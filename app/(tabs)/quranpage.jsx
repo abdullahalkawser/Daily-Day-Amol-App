@@ -86,7 +86,7 @@ const QuranPage = () => {
 
 const styles = StyleSheet.create({
   pageTitle: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginVertical: 10, color: '#1a237e' },
-  surahHeader: { padding: 15, marginVertical: 5, backgroundColor: '#7986cb', borderRadius: 10 },
+  surahHeader: { padding: 15, marginVertical: 5, backgroundColor: '#7986cc', borderRadius: 10 },
   surahName: { fontSize: 18, fontWeight: 'bold', color: 'white', textAlign: 'center' },
   ayatContainer: { marginVertical: 8, padding: 12, backgroundColor: '#e8eaf6', borderRadius: 10 },
   activeAyat: { backgroundColor: '#ffcc80' },
