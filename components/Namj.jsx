@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import { Entypo } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 
@@ -90,8 +91,8 @@ export default function App() {
           onPress={() => toggleExpanded(index)}
         >
           {/* Card Header with a modern gradient */}
-          <LinearGradient
-            colors={['#16A085', '#06B6D4']}
+          <SafeLinearGradient
+            colors={['#16A085', '#06B6D4'] || ["#4c669f","#3b5998"]}
             style={styles.cardHeader}
           >
             <View>
@@ -103,7 +104,7 @@ export default function App() {
               size={24}
               color="white"
             />
-          </LinearGradient>
+          </SafeLinearGradient>
           
           {/* Collapsible Steps Content */}
           {expandedIndex === index && (

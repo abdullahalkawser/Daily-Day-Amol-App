@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import { useState } from 'react';
 import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -108,8 +109,8 @@ export default function SunnahCategories({ navigation }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <LinearGradient
-        colors={["#4b6cb7", "#182848"]}
+      <SafeLinearGradient
+        colors={["#4b6cb7", "#182848"] || ["#4c669f","#3b5998"]}
         style={styles.headerGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -125,7 +126,7 @@ export default function SunnahCategories({ navigation }) {
           </View>
           <Ionicons name="book-sharp" size={40} color="#fff" style={styles.headerIcon} />
         </View>
-      </LinearGradient>
+      </SafeLinearGradient>
 
       <ScrollView style={styles.scrollView}>
         {sunnahData.map((category, catIndex) => (

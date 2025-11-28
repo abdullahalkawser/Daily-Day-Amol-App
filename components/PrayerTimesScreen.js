@@ -2,12 +2,12 @@ import { CalculationMethod, Madhab, PrayerTimes } from "adhan";
 import dayjs from "dayjs";
 import "dayjs/locale/bn";
 import durationPlugin from "dayjs/plugin/duration";
-import { LinearGradient } from "expo-linear-gradient";
 import * as Location from "expo-location";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ActivityIndicator, Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeIn, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import SafeLinearGradient from '../components/SafeLinearGradient';
 
 dayjs.extend(durationPlugin);
 dayjs.locale("bn");
@@ -148,10 +148,10 @@ export default function PrayerTimesComponent() {
 
   // ✅ Reusable Prayer Item with Current Waqt red highlight
   const PrayerTimeItem = ({ item, isCurrent, isDone }) => {
-    const bgColor = isCurrent ? '#DC2626' : isDone ? '#d4edda' : '#E9F5FF';
-    const borderColor = isCurrent ? '#DC2626' : isDone ? '#c3e6cb' : '#A4D9E2';
-    const textColor = isCurrent || isDone ? '#fff' : '#333';
-    const timeColor = isCurrent || isDone ? '#fff' : '#1A6E60';
+    const bgColor = isCurrent ? '#DC2626' : isDone ? '#595d59ff' : '#565c46ff';
+    const borderColor = isCurrent ? '#DC2626' : isDone ? '#242825ff' : '#1b1f1fff';
+    const textColor = isCurrent || isDone ? '#fcfcfcff' : '#fffefeff';
+    const timeColor = isCurrent || isDone ? '#ffffffff' : '#fef6f6ff';
 
     return (
       <TouchableOpacity
@@ -183,7 +183,7 @@ export default function PrayerTimesComponent() {
           return (
             <View key={i} style={styles.stepItem}>
               <TouchableOpacity style={[styles.stepCircle, done && styles.stepCircleDone]} onPress={() => handlePrayerDone(name)}>
-                {done ? <Icon name="check" size={18} color="#fff"/> : <Text style={styles.stepLabel}>{i+1}</Text>}
+                {done ? <Icon name="check" size={18} color="#b9aeaeff"/> : <Text style={styles.stepLabel}>{i+1}</Text>}
               </TouchableOpacity>
               <Text style={styles.stepText}>{name}</Text>
               {i < steps.length-1 && <View style={[styles.stepLine, done && prevDone && styles.stepLineDone]} />}
@@ -213,7 +213,7 @@ export default function PrayerTimesComponent() {
       <Animated.View entering={FadeIn.duration(800)}>
         <View style={styles.header}>
           <View style={styles.headerItem}>
-            <Icon name="map-marker-outline" size={16} color="#555" />
+            <Icon name="map-marker-outline" size={16} color="#fff9f9ff" />
             <Text style={styles.headerText}>{city}</Text>
           </View>
         </View>
@@ -222,7 +222,7 @@ export default function PrayerTimesComponent() {
         <PrayerProgress />
 
         <Animated.View style={[styles.gradientCard, animatedGradientStyle]}>
-          <LinearGradient colors={animatedColor.value} style={styles.gradientCardContent}>
+       <SafeLinearGradient colors={["#ca1512ff", "#310fbaff"]} style={styles.gradientCardContent}>
             <Text style={styles.remainingText}>
               {currentWaqt ? ` (${currentWaqt.name}) শেষ হতে ` : nextWaqt ? ` (${nextWaqt.name}) ওয়াক্ত শুরু হতে ` : 'সময় পাওয়া যায়নি'}
             </Text>
@@ -238,7 +238,7 @@ export default function PrayerTimesComponent() {
                 <Text style={styles.sunInfoText}>সূর্যাস্ত: {sunsetTime ? toBanglaNumber(sunsetTime.format("h:mm A")) : '...'}</Text>
               </View>
             </View>
-          </LinearGradient>
+          </SafeLinearGradient>
         </Animated.View>
 
         <View style={styles.contentRow}>
@@ -264,11 +264,31 @@ export default function PrayerTimesComponent() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F7F8FA" },
+  container: { flex: 1, backgroundColor: '#1e1c1cff', },
   center: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#F7F8FA" },
-  header: { flexDirection: 'row', justifyContent: 'center', paddingHorizontal: 20, paddingVertical: 15, backgroundColor: '#fff', borderBottomWidth: 1, borderBottomColor: '#eee' },
+header: {
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',            // vertically center content
+  paddingHorizontal: 20,
+  paddingVertical: 12,             // a bit more padding
+  backgroundColor: '#2a2d2bff',      // soft green
+  borderRadius: 16,                // rounded corners
+  marginHorizontal: 15,            // give space from screen edges
+  marginTop: 10,      
+    marginBottom: 10,  
+  shadowColor: '#000',             // shadow for elevation
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 5,
+  elevation: 5,                     // Android shadow
+  borderBottomWidth: 0,             // remove bottom border
+},
   headerItem: { flexDirection: 'row', alignItems: 'center' },
-  headerText: { marginLeft: 8, fontSize: 14, color: '#333', fontWeight: '500' },
+  headerText: {   marginLeft: 8,
+  fontSize: 20,          // increased font size
+  color: '#fffbfb',      // soft white
+  fontWeight: '500',},
   gradientCard: { borderRadius: 20, margin: 15, elevation: 8, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.2, shadowRadius: 10 },
   gradientCardContent: { padding: 10, alignItems: "center", borderRadius: 20 },
   countdownText: { fontSize: 40, fontWeight: "700", color: "#fff", letterSpacing: 2, textShadowColor: 'rgba(0, 0, 0, 0.2)', textShadowOffset: { width: -1, height: 1 }, textShadowRadius: 10 },
@@ -278,24 +298,24 @@ const styles = StyleSheet.create({
   sunInfoText: { fontSize: 14, color: '#fff', marginLeft: 8, fontWeight: '500' },
   stepperContainer: { flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginTop: 5, marginHorizontal: 10, marginBottom: 8 },
   stepItem: { alignItems: "center", position: "relative" },
-  stepCircle: { width: 35, height: 35, borderRadius: 18, borderWidth: 2, borderColor: "#10B981", backgroundColor: "#fff", justifyContent: "center", alignItems: "center", zIndex: 1 },
-  stepCircleDone: { backgroundColor: "#10B981", borderColor: "#059669" },
+  stepCircle: { width: 35, height: 35, borderRadius: 18, borderWidth: 2, borderColor: "#10B981", backgroundColor: "#2b2828ff", justifyContent: "center", alignItems: "center", zIndex: 1 },
+  stepCircleDone: { backgroundColor: "#333735ff", borderColor: "#6f8a82ff" },
   stepLabel: { fontSize: 14, fontWeight: "600", color: "#10B981" },
-  stepText: { marginTop: 5, fontSize: 12, fontWeight: "500", color: "#333" },
-  stepLine: { position: "absolute", top: 17, left: "50%", width: 40, height: 2, backgroundColor: "#D1D5DB", zIndex: 0 },
-  stepLineDone: { backgroundColor: "#10B981" },
+  stepText: { marginTop: 5, fontSize: 12, fontWeight: "500", color: "#fff3f3ff" },
+  stepLine: { position: "absolute", top: 17, left: "50%", width: 40, height: 2, backgroundColor: "#09cc1dff", zIndex: 0 },
+  stepLineDone: { backgroundColor: "#0dc94fff" },
   progressContainer: { marginHorizontal: 20, marginBottom: 12, marginTop: 2 },
-  progressText: { fontSize: 14, fontWeight: "600", color: "#374151", marginBottom: 8, textAlign: "center" },
-  progressBar: { height: 10, borderRadius: 5, backgroundColor: "#E5E7EB", overflow: "hidden" },
+  progressText: { fontSize: 14, fontWeight: "600", color: "#f7fafeff", marginBottom: 8, textAlign: "center" },
+  progressBar: { height: 10, borderRadius: 5, backgroundColor: "#d1f2d1ff", overflow: "hidden" },
   progressFill: { height: "100%", borderRadius: 5, backgroundColor: "#10B981" },
   contentRow: { flexDirection: screenWidth > 600 ? 'row' : 'column', marginHorizontal: 15, marginTop: 10, gap: 15 },
-  contentCard: { flex: 1, backgroundColor: '#fff', borderRadius: 15, padding: 15, elevation: 2, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 10, borderWidth: 1, borderColor: '#eee', marginBottom: 15 },
-  cardTitle: { fontSize: 18, fontWeight: "600", color: "#333", marginBottom: 15 },
-  prayerTimesSection: { flex: 1, backgroundColor: '#fff', borderRadius: 15, padding: 7, elevation: 2, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 10, borderWidth: 1, borderColor: '#eee', marginBottom: 15 },
+  contentCard: { flex: 1, backgroundColor: '#232020ff', borderRadius: 15, padding: 15, elevation: 2, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 10, borderWidth: 1, borderColor: '#3c3838ff', marginBottom: 15 },
+  cardTitle: { fontSize: 18, fontWeight: "600", color: "#ffffffff", marginBottom: 15 },
+  prayerTimesSection: { flex: 1, backgroundColor: '#2a2727ff', borderRadius: 15, padding: 7, elevation: 2, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 10, borderWidth: 1, borderColor: '#3d3939ff', marginBottom: 15 },
   prayerItemsContainer: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: 10 },
   prayerItem: { width: '30%', borderRadius: 12, padding: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1, marginBottom: 10 },
   forbiddenItemsContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  forbiddenCard: { width: '30%', backgroundColor: '#FFE5E5', borderRadius: 12, padding: 10, alignItems: 'center', borderWidth: 1, borderColor: '#FCA5A5' },
-  forbiddenCardName: { fontSize: 12, fontWeight: '500', color: '#DC2626' },
-  forbiddenCardTime: { fontSize: 10, fontWeight: '600', color: '#DC2626', marginTop: 5, textAlign: 'center' },
+  forbiddenCard: { width: '30%', backgroundColor: '#403b3bff', borderRadius: 12, padding: 10, alignItems: 'center', borderWidth: 1, borderColor: '#2f2b2bff' },
+  forbiddenCardName: { fontSize: 12, fontWeight: '500', color: '#ffffffff' },
+  forbiddenCardTime: { fontSize: 10, fontWeight: '600', color: '#fffdfdff', marginTop: 5, textAlign: 'center' },
 });

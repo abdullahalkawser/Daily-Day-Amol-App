@@ -1,112 +1,350 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableWithoutFeedback, Animated, ScrollView } from 'react-native';
-import { Link } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
+import { AntDesign } from '@expo/vector-icons'; // নিশ্চিত করুন এটি ইনস্টল করা আছে
+import { useState } from 'react';
+import {
+  Animated,
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View
+} from 'react-native';
+import SafeLinearGradient from './SafeLinearGradient'; // ধরে নিচ্ছি SafeLinearGradient আপনার রুট ফোল্ডারে আছে
 
+// **********************************
+// ১. সুন্নাহর বিস্তারিত ডেটা (আপডেট করা হয়েছে)
+// **********************************
 const sunnahItems = [
-  { href: "/meswak", title: "মেসওয়াক", icon: "🌿", colors: ["#4CAF50", "#66BB6A"] },
-  { href: "/start-right", title: "ডান দিক থেকে শুরু", icon: "➡️", colors: ["#2196F3", "#42A5F5"] },
-  { href: "/wash-hands", title: "হাত ধোয়া", icon: "💧", colors: ["#9C27B0", "#AB47BC"] },
-  { href: "/three-fingers", title: "তিন আঙুল", icon: "✋", colors: ["#FF9800", "#FFB74D"] },
-  { href: "/sleep-right", title: "ডান কাত হয়ে ঘুম", icon: "🛌", colors: ["#5D4037", "#8D6E63"] },
-  { href: "/loud-salam", title: "জোরে সালাম", icon: "🗣️", colors: ["#E91E63", "#F06292"] },
-  { href: "/smile", title: "হাসিমুখে কথা", icon: "😊", colors: ["#00BCD4", "#26C6DA"] },
-  { href: "/dress-caution", title: "পোশাক সতর্কতা", icon: "👕", colors: ["#607D8B", "#90A4AE"] },
-  { href: "/serve-sick", title: "রোগীর সেবা", icon: "🏥", colors: ["#8BC34A", "#AED581"] },
+    { 
+        href: "/meswak", 
+        title: "মেসওয়াক", 
+        icon: "🌿", 
+        colors: ["#4CAF50", "#66BB6A"],
+        details: "সালাতের আগে, ঘুমানোর আগে এবং ঘুম থেকে উঠার পর মেসওয়াক করা সুন্নাহ। এর মাধ্যমে মুখ পরিষ্কার ও দুর্গন্ধমুক্ত হয়।",
+        benefit: "মেসওয়াক মুখকে পরিষ্কার করে এবং আল্লাহর সন্তুষ্টি এনে দেয়। এর ব্যবহারকারী ১০ রাকাত নফল নামাজের সওয়াব পায়।",
+        how_prophet_did: "নবী (সাঃ) ডান হাত দিয়ে মেসওয়াক করতেন এবং উপরে-নিচে ও আড়াআড়িভাবে পরিষ্কার করতেন। তিনি ঘন ঘন মেসওয়াক করতেন।",
+    },
+    { 
+        href: "/start-right", 
+        title: "ডান দিক থেকে শুরু", 
+        icon: "➡️", 
+        colors: ["#2196F3", "#42A5F5"],
+        details: "পোশাক পরিধান, ওযু করা, জুতো পরা, মসজিদে প্রবেশ এবং পানাহার ইত্যাদি ভালো কাজগুলো ডান দিক থেকে শুরু করা।",
+        benefit: "এটি নবী (সাঃ)-এর প্রিয় অভ্যাস ছিল, যা প্রতিটি কাজে বরকত আনে এবং শৃঙ্খলা শিক্ষা দেয়।",
+        how_prophet_did: "নবী (সাঃ) সর্বদা ডান হাত বা ডান পা দিয়ে ভালো কাজ শুরু করতে পছন্দ করতেন এবং বাম হাত/পা খারাপ বা নোংরা কাজ (যেমন- শৌচাগারে প্রবেশ) এর জন্য ব্যবহার করতেন।",
+    },
+    { 
+        href: "/wash-hands", 
+        title: "হাত ধোয়া", 
+        icon: "💧", 
+        colors: ["#9C27B0", "#AB47BC"],
+        details: "ঘুম থেকে উঠার পর পাত্রে হাত ডুবানোর আগে কমপক্ষে তিনবার কবজি পর্যন্ত হাত ধোয়া সুন্নাহ।",
+        benefit: "হাত ধোয়ার মাধ্যমে রাতের নাপাকি বা জীবাণু দূর হয়। কারণ রাতে হাত কোথায় থাকে, তা জানা যায় না।",
+        how_prophet_did: "নবী (সাঃ) সকালে ঘুম থেকে উঠে পানি ঢেলে তিনবার কবজি পর্যন্ত হাত ধুয়ে নিতেন।",
+    },
+    { 
+        href: "/three-fingers", 
+        title: "তিন আঙুল", 
+        icon: "✋", 
+        colors: ["#FF9800", "#FFB74D"],
+        details: "খাবার খাওয়ার সময় ডান হাতের তিনটি আঙুল (বৃদ্ধা, শাহাদত ও মধ্যমা) ব্যবহার করা।",
+        benefit: "এটি বিনয় ও পরিচ্ছন্নতার প্রতীক এবং এতে খাবারের বরকত বাড়ে। শেষে আঙুল চেটে খেলে আঙ্গুল আল্লাহর কাছে ক্ষমা চায়।",
+        how_prophet_did: "নবী (সাঃ) সাধারণত তিনটি আঙুল ব্যবহার করে আহার করতেন এবং শেষে আঙুল চেটে খেতেন।",
+    },
+    { 
+        href: "/sleep-right", 
+        title: "ডান কাত হয়ে ঘুম", 
+        icon: "🛌", 
+        colors: ["#5D4037", "#8D6E63"],
+        details: "ওযু করে ডান কাত হয়ে এবং ডান গালের নিচে ডান হাত দিয়ে ঘুমানো।",
+        benefit: "শারীরিক ও মানসিক স্বাস্থ্যের জন্য উপকারী এবং এটি মুস্তাহাব। এভাবে ঘুমালে হঠাৎ মৃত্যু হলে শাহাদাতের সওয়াব পাওয়া যায়।",
+        how_prophet_did: "নবী (সাঃ) ঘুমানোর আগে ওযু করতেন, বিছানা ঝেড়ে নিতেন এবং ডান পাশে কাত হয়ে শুতেন।",
+    },
+    { 
+        href: "/loud-salam", 
+        title: "জোরে সালাম", 
+        icon: "🗣️", 
+        colors: ["#E91E63", "#F06292"],
+        details: "পরিচিত-অপরিচিত সবাইকে স্পষ্টভাবে এবং জোরে সালাম দেওয়া।",
+        benefit: "সালাম শান্তির বার্তা এবং ভালোবাসা বাড়ায়। সালামের মাধ্যমে আল্লাহ ১০ থেকে ৩০ নেকী দেন।",
+        how_prophet_did: "নবী (সাঃ) উচ্চস্বরে সালাম দিতেন যাতে উপস্থিত সকলে শুনতে পায় এবং জবাব দিতে পারে।",
+    },
+    { 
+        href: "/smile", 
+        title: "হাসিমুখে কথা", 
+        icon: "😊", 
+        colors: ["#00BCD4", "#26C6DA"],
+        details: "কারো সাথে কথা বলার সময় বা সাক্ষাতের সময় হাসিমুখে থাকা।",
+        benefit: "হাসিমুখে কথা বলা একটি সাদকা (দান) এবং এটি হৃদ্যতা বৃদ্ধি করে ও মনকে নরম করে।",
+        how_prophet_did: "নবী (সাঃ)-কে সবসময় হাসিমুখে দেখা যেত। তিনি সাহাবাদের সাথে হাসিমুখে কথা বলতেন।",
+    },
+    { 
+        href: "/dress-caution", 
+        title: "পোশাক সতর্কতা", 
+        icon: "👕", 
+        colors: ["#607D8B", "#90A4AE"],
+        details: "পুরুষের জন্য টাখনুর উপরে এবং মহিলাদের জন্য শালীন ও ঢিলেঢালা পোশাক পরিধান করা।",
+        benefit: "এটি অহংকার থেকে বাঁচায় এবং আল্লাহর নির্দেশ পালন হয়। টাখনুর নিচে কাপড় পরা জাহান্নামের কারণ হতে পারে।",
+        how_prophet_did: "নবী (সাঃ)-এর পোশাক ছিল পরিচ্ছন্ন এবং টাখনুর নিচে যেত না।",
+    },
+    { 
+        href: "/serve-sick", 
+        title: "রোগীর সেবা", 
+        icon: "🏥", 
+        colors: ["#8BC34A", "#AED581"],
+        details: "অসুস্থ ব্যক্তিকে দেখতে যাওয়া এবং তাদের জন্য দোয়া করা, তাদের সান্ত্বনা দেওয়া।",
+        benefit: "এটি একটি মহান ইবাদত। এর ফলে ফেরেশতারা দেখতে যাওয়া ব্যক্তির জন্য দোয়া করে এবং সে জান্নাতের বাগানে বিচরণ করে।",
+        how_prophet_did: "নবী (সাঃ) অসুস্থ সাহাবিদের দেখতে যেতেন, তাদের খোঁজ নিতেন এবং তাদের সান্ত্বনা দিয়ে বলতেন: 'ভয় করো না, ইনশাআল্লাহ্ ভালো হয়ে যাবে'।",
+    },
 ];
 
+// **********************************
+// ২. SunnahList কম্পোনেন্ট
+// **********************************
 const SunnahList = () => {
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      
-      <Text style={styles.header}>নবী (সাঃ) এর ৯টি সুন্নাহ 🌙</Text>
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedSunnah, setSelectedSunnah] = useState(null);
 
-      <View style={styles.grid}>
-        {sunnahItems.map((item, index) => (
-          <Link key={index} href={item.href} asChild>
-            <Card item={item} />
-          </Link>
-        ))}
-      </View>
-    </ScrollView>
-  );
+    const handleCardPress = (item) => {
+        setSelectedSunnah(item);
+        setModalVisible(true);
+    };
+
+    return (
+        <ScrollView contentContainerStyle={styles.container}>
+            
+            <Text style={styles.header}>নবী (সাঃ) এর ৯টি সুন্নাহ 🌙</Text>
+
+            <View style={styles.grid}>
+                {sunnahItems.map((item, index) => (
+                    <Card 
+                        key={index} 
+                        item={item} 
+                        onPress={() => handleCardPress(item)} 
+                    />
+                ))}
+            </View>
+
+            {/* মোডাল শুধুমাত্র তখনই রেন্ডার হবে যখন একটি সুন্নাহ নির্বাচিত হবে */}
+            <SunnahDetailsModal 
+                visible={modalVisible} 
+                item={selectedSunnah} 
+                onClose={() => setModalVisible(false)} 
+            />
+        </ScrollView>
+    );
 };
 
-const Card = ({ item }) => {
-  const scaleAnim = new Animated.Value(1);
 
-  const onPressIn = () => {
-    Animated.spring(scaleAnim, {
-      toValue: 0.95,
-      useNativeDriver: true,
-    }).start();
-  };
+// **********************************
+// ৩. Card কম্পোনেন্ট
+// **********************************
+const Card = ({ item, onPress }) => {
+    const scaleAnim = new Animated.Value(1);
 
-  const onPressOut = () => {
-    Animated.spring(scaleAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
-  };
+    const onPressIn = () => {
+        Animated.spring(scaleAnim, {
+            toValue: 0.95,
+            useNativeDriver: true,
+        }).start();
+    };
 
-  return (
-    <TouchableWithoutFeedback onPressIn={onPressIn} onPressOut={onPressOut}>
-      <Animated.View style={[styles.card, { transform: [{ scale: scaleAnim }] }]}>
-        <LinearGradient colors={item.colors} style={styles.gradient}>
-          <Text style={styles.icon}>{item.icon}</Text>
-          <Text style={styles.title}>{item.title}</Text>
-        </LinearGradient>
-      </Animated.View>
-    </TouchableWithoutFeedback>
-  );
+    const onPressOut = () => {
+        Animated.spring(scaleAnim, {
+            toValue: 1,
+            useNativeDriver: true,
+        }).start(() => {
+            onPress(); // অ্যানিমেশন শেষ হওয়ার পরে মোডাল খুলুন
+        });
+    };
+
+    return (
+        <TouchableWithoutFeedback onPressIn={onPressIn} onPressOut={onPressOut}>
+            <Animated.View style={[styles.card, { transform: [{ scale: scaleAnim }] }]}>
+                {/* SafeLinearGradient একটি ডামি কম্পোনেন্ট হিসেবে ব্যবহৃত হয়েছে */}
+                <SafeLinearGradient 
+                    colors={item.colors || ["#4c669f","#3b5998"]} 
+                    style={styles.gradient}
+                >
+                    <Text style={styles.icon}>{item.icon}</Text>
+                    <Text style={styles.title}>{item.title}</Text>
+                </SafeLinearGradient>
+            </Animated.View>
+        </TouchableWithoutFeedback>
+    );
+};
+
+
+// **********************************
+// ৪. SunnahDetailsModal কম্পোনেন্ট (মোডাল)
+// **********************************
+const SunnahDetailsModal = ({ visible, item, onClose }) => {
+    if (!item) return null; // item না থাকলে মোডাল রেন্ডার হবে না
+
+    return (
+        <Modal
+            animationType="slide" // স্লাইড অ্যানিমেশন দেখতে ভালো লাগবে
+            transparent={true}
+            visible={visible}
+            onRequestClose={onClose}
+        >
+            <View style={modalStyles.centeredView}>
+                <View style={modalStyles.modalView}>
+                    
+                    {/* Close বাটন */}
+                    <Pressable 
+                        style={modalStyles.closeButton} 
+                        onPress={onClose}
+                    >
+                        {/* AntDesign আইকন ব্যবহার করা হয়েছে */}
+                        <AntDesign name="closecircle" size={28} color="#E91E63" />
+                    </Pressable>
+
+                    <Text style={modalStyles.modalTitle}>{item.icon} {item.title}</Text>
+                    
+                    {/* ডিটেইলস দেখানোর জন্য স্ক্রলভিউ */}
+                    <ScrollView style={{maxHeight: '90%'}}>
+                        <View style={modalStyles.detailSection}>
+                            <Text style={modalStyles.sectionTitle}>ℹ️ সুন্নাহর বিস্তারিত</Text>
+                            <Text style={modalStyles.sectionText}>{item.details}</Text>
+                        </View>
+                        
+                        <View style={modalStyles.detailSection}>
+                            <Text style={modalStyles.sectionTitle}>✨ ফযীলত</Text>
+                            <Text style={modalStyles.sectionText}>{item.benefit}</Text>
+                        </View>
+
+                        <View style={modalStyles.detailSection}>
+                            <Text style={modalStyles.sectionTitle}>✅ নবী (সাঃ) কিভাবে করতেন</Text>
+                            <Text style={modalStyles.sectionText}>{item.how_prophet_did}</Text>
+                        </View>
+                    </ScrollView>
+                </View>
+            </View>
+        </Modal>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    backgroundColor: '#F5F5F5',
-  },
-  header: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginVertical: 15,
-    color: '#333',
-  },
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  card: {
-    width: '30%', // প্রতি লাইনে ৩টা বক্স
-    aspectRatio: 1,
-    borderRadius: 14,
-    overflow: 'hidden',
-    marginVertical: 8,
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 5,
-  },
-  gradient: {
-    flex: 1,
-    borderRadius: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 8,
-  },
-  icon: {
-    fontSize: 28,
-    marginBottom: 6,
-  },
-  title: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
+    container: {
+        padding: 10,
+        backgroundColor: '#F5F5F5',
+    },
+    header: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginVertical: 15,
+        color: '#333',
+    },
+    grid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        paddingHorizontal: 5,
+    },
+    card: {
+        width: '31%', // সামান্য ছোট করা হয়েছে
+        aspectRatio: 1,
+        borderRadius: 14,
+        overflow: 'hidden',
+        marginVertical: 8,
+        elevation: 6, // শ্যাডো বাড়ানো হয়েছে
+        shadowColor: '#000',
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 0, height: 3 },
+        shadowRadius: 5,
+    },
+    gradient: {
+        flex: 1,
+        borderRadius: 14,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 8,
+    },
+    icon: {
+        fontSize: 34,
+        marginBottom: 6,
+    },
+    title: {
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: '700',
+        textAlign: 'center',
+    },
 });
 
+
+// মোডালের জন্য স্টাইল
+const modalStyles = StyleSheet.create({
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // গাঢ় ওভারলে
+    },
+    modalView: {
+        backgroundColor: "white",
+        borderRadius: 15,
+        padding: 20,
+        margin: 20,
+        alignItems: "stretch",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.35,
+        shadowRadius: 4,
+        elevation: 8,
+        width: '90%', 
+        maxHeight: '85%', // মোডালের উচ্চতা বৃদ্ধি
+    },
+    closeButton: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        zIndex: 1,
+        padding: 5,
+    },
+    modalTitle: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginBottom: 15,
+        color: '#1565C0', // নীল রং ব্যবহার
+        textAlign: 'center',
+        borderBottomWidth: 2,
+        borderBottomColor: '#BBDEFB',
+        paddingBottom: 10,
+    },
+    detailSection: {
+        marginBottom: 20,
+        padding: 10,
+        backgroundColor: '#F3F4F6', // সেকশন ব্যাকগ্রাউন্ড
+        borderRadius: 8,
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: '800',
+        color: '#004D40', // গাঢ় সবুজ রং
+        marginBottom: 8,
+        textDecorationLine: 'underline',
+    },
+    sectionText: {
+        fontSize: 16,
+        color: '#333',
+        lineHeight: 24,
+        textAlign: 'justify',
+    }
+});
+
+
 export default SunnahList;
+
+/*
+গুরুত্বপূর্ণ নোট:
+১. এই কোডটি সঠিকভাবে কাজ করার জন্য আপনাকে অবশ্যই নিম্নলিখিত লাইব্রেরি ইনস্টল করতে হবে:
+   npm install @expo/vector-icons
+   অথবা
+   expo install @expo/vector-icons
+
+২. 'SafeLinearGradient' কম্পোনেন্টটি নিশ্চিত করুন যে আপনার প্রজেক্টে সঠিকভাবে ইমপোর্ট করা আছে।
+*/

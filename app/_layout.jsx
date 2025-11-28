@@ -3,6 +3,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
+
 import { configureReanimatedLogger, ReanimatedLogLevel } from 'react-native-reanimated';
 
 // ⚠️ Configure Reanimated logger BEFORE any Reanimated usage
@@ -25,6 +26,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> 
   
         // <Stack.Screen name="hadis/index" options={{ headerShown: false }} />
+         <Stack.Screen name="namj/index" options={{ headerShown: false }} />
         // <Stack.Screen name="duas/index" options={{ headerShown: false }} />
         // <Stack.Screen name="gosol/index" options={{ headerShown: false }} />
         // <Stack.Screen name="arbi/index" options={{ headerShown: false }} />

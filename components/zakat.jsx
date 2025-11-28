@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, FlatList, StyleSheet, Modal, Dimensions, Alert } from 'react-native';
-import { FontAwesome5, MaterialIcons, Entypo, Ionicons, FontAwesome } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Entypo, FontAwesome, FontAwesome5, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { useState } from 'react';
+import { Dimensions, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 import { useRouter } from "expo-router";
 import { StatusBar } from 'react-native';
+import SafeLinearGradient from '../components/SafeLinearGradient';
 const { width } = Dimensions.get('window');
 
 const ZakatApp = () => {
@@ -65,7 +66,7 @@ const ZakatApp = () => {
     <ScrollView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#6366f1" />
       {/* Header */}
-      <LinearGradient colors={['#4f46e5', '#6366f1']} style={styles.header}>
+      <SafeLinearGradient colors={['#4f46e5', '#6366f1'] || ["#4c669f","#3b5998"]} style={styles.header}>
         <View style={styles.headerButtons}>
           <TouchableOpacity onPress={() => router.back('/home')}>
             <Ionicons name="arrow-back" size={24} color="white" />
@@ -91,7 +92,7 @@ const ZakatApp = () => {
             <Text style={styles.priceValue}>৳{silverPrice}/তোলা</Text>
           </View>
         </View>
-      </LinearGradient>
+      </SafeLinearGradient>
 
       {/* Tabs */}
       <View style={styles.tabsContainer}>
@@ -135,7 +136,7 @@ const ZakatApp = () => {
       {activeTab === 'info' && (
         <View style={styles.tabContent}>
           {zakatInfo.map((item, index) => (
-            <LinearGradient key={index} colors={item.color} style={styles.infoCard}>
+            <LinearGradient key={index} colors={item.color || ["#4c669f","#3b5998"]} style={styles.infoCard}>
               <View style={styles.infoIconContainer}>{item.icon}</View>
               <Text style={styles.infoTitle}>{item.title}</Text>
               <Text style={styles.infoDescription}>{item.description}</Text>
@@ -149,7 +150,7 @@ const ZakatApp = () => {
         <View style={styles.tabContent}>
           <Text style={styles.guideHeader}>যাকাত প্রদানের নিয়ম ও নির্দেশিকা</Text>
           {guideInfo.map(item => (
-            <LinearGradient key={item.id} colors={item.color} style={styles.guideCard}>
+            <LinearGradient key={item.id} colors={item.color || ["#4c669f","#3b5998"]} style={styles.guideCard}>
               <View style={styles.guideIconContainer}>
                 <FontAwesome name={item.icon} size={20} color="white" />
               </View>
@@ -469,3 +470,79 @@ const styles = StyleSheet.create({
 });
 
 export default ZakatApp;
+
+// const sleepPracticesData = [
+//   {
+//     id: 'step1',
+//     title: 'ধাপ ১: অযু করা',
+//     iconName: 'hand-water',
+//     data: [
+//       {
+//         id: 'step1-1',
+//         title: 'অযু করুন',
+//         description: 'ঘুমানোর আগে অযু করা সুন্নত। এটি আমাদের পবিত্র অবস্থায় ঘুমাতে সাহায্য করে।',
+//         hadith: 'রাসূলুল্লাহ (সা.) বলেছেন: "যখন তুমি বিছানায় যাবে, তখন নামাযের মত করে অযু করবে।"'
+//       }
+//     ]
+//   },
+//   {
+//     id: 'step2',
+//     title: 'ধাপ ২: বিছানা পরিষ্কার করা',
+//     iconName: 'broom',
+//     data: [
+//       {
+//         id: 'step2-1',
+//         title: 'বিছানা ঝেড়ে নিন',
+//         description: 'বিছানায় যাওয়ার আগে চাদর দিয়ে বিছানা তিনবার ঝেড়ে নিন।',
+//         arabic: 'بِسْمِ اللهِ',
+//         pronunciation: 'বিসমিল্লাহ',
+//         meaning: '(আল্লাহর নামে)'
+//       }
+//     ]
+//   },
+//   {
+//     id: 'step3',
+//     title: 'ধাপ ৩: ঘুমের দোয়া পড়া',
+//     iconName: 'book-open-variant',
+//     data: [
+//       {
+//         id: 'step3-1',
+//         title: 'প্রধান ঘুমের দোয়া',
+//         description: 'এই দোয়া পড়ে ঘুমানো সুন্নত।',
+//         arabic: 'اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا',
+//         pronunciation: 'আল্লাহুম্মা বিসমিকা আমূতু ওয়া আহইয়া',
+//         meaning: 'হে আল্লাহ! তোমার নামেই আমি মরি এবং বাঁচি।'
+//       }
+//     ]
+//   },
+//   {
+//     id: 'step4',
+//     title: 'ধাপ ৪: তাসবীহ পড়া',
+//     iconName: 'islam',
+//     data: [
+//       {
+//         id: 'step4-1',
+//         title: 'সুবহানাল্লাহ - ৩৩ বার',
+//         description: 'সুবহানাল্লাহ ৩৩ বার পড়ুন।',
+//         arabic: 'سُبْحَانَ اللهِ',
+//         pronunciation: 'সুবহানাল্লাহ',
+//         meaning: 'আল্লাহ পবিত্র'
+//       }
+//     ]
+//   },
+//   {
+//     id: 'step5',
+//     title: 'ধাপ ৫: শোয়ার আদব',
+//     iconName: 'bed',
+//     data: [
+//       {
+//         id: 'step5-1',
+//         title: 'ডান কাত হয়ে শুয়ে দোয়া',
+//         description: 'ডান কাত হয়ে ডান হাত গালের নিচে রেখে এই দোয়া পড়ুন।',
+//         arabic: 'اللَّهُمَّ أَسْلَمْتُ وَجْهِي إِلَيْكَ وَفَوَّضْتُ أَمْرِي إِلَيْكَ',
+//         pronunciation: 'আল্লাহুম্মা আসলামতু ওয়াজহিয়া ইলাইকা ওয়া ফাওওয়াদতু আমরি ইলাইক',
+//         meaning: 'হে আল্লাহ! আমি আমার মুখমণ্ডল তোমার কাছে সমর্পণ করলাম এবং আমার সকল বিষয় তোমার কাছে অর্পণ করলাম।'
+//       }
+//     ]
+//   }
+// ];

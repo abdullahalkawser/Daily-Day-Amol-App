@@ -9,7 +9,7 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import { Ionicons } from "@expo/vector-icons";
 
 const duasCategories = [
@@ -176,8 +176,8 @@ export default function DuasScreen() {
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={["#667eea", "#764ba2"]}
+      <SafeLinearGradient
+        colors={["#667eea", "#764ba2"] || ["#4c669f","#3b5998"]}
         style={styles.headerGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -192,7 +192,7 @@ export default function DuasScreen() {
             <View key={i} style={[styles.patternCircle, { opacity: 0.1 + i * 0.05 }]} />
           ))}
         </View>
-      </LinearGradient>
+      </SafeLinearGradient>
 
       <View style={styles.categoriesSection}>
         <Text style={styles.sectionTitle}>বিভাগসমূহ</Text>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Modal, StyleSheet, Dimensions } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import * as Progress from 'react-native-progress';
 import { StatusBar } from 'react-native';
 
@@ -72,7 +73,7 @@ export default function TasbihPage() {
         renderItem={({ item, index }) => {
           const progress = counts[index] / item.maxCount;
           return (
-            <LinearGradient colors={['#ffffff', '#f0f4ff']} style={styles.card}>
+            <SafeLinearGradient colors={['#ffffff', '#f0f4ff'] || ["#4c669f","#3b5998"]} style={styles.card}>
               <Text style={styles.tasbihText}>{item.text}</Text>
               <Text style={styles.meaningText}>{item.meaning}</Text>
               <Text style={styles.timeText}>পড়ার সময়: {item.time}</Text>
@@ -98,7 +99,7 @@ export default function TasbihPage() {
                   <Text style={styles.resetText}>Reset</Text>
                 </TouchableOpacity>
               </View>
-            </LinearGradient>
+            </SafeLinearGradient>
           );
         }}
       />
@@ -110,13 +111,13 @@ export default function TasbihPage() {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalContainer}>
-          <LinearGradient colors={['#6a11cb', '#2575fc']} style={styles.modalContent}>
+          <SafeLinearGradient colors={['#6a11cb', '#2575fc'] || ["#4c669f","#3b5998"]} style={styles.modalContent}>
             <Text style={styles.modalText}>মাশাল্লাহ! আপনি সম্পূর্ণ করেছেন।</Text>
             <Text style={styles.modalTasbih}>{completedTasbih}</Text>
             <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
               <Text style={styles.closeText}>Close</Text>
             </TouchableOpacity>
-          </LinearGradient>
+          </SafeLinearGradient>
         </View>
       </Modal>
     </View>

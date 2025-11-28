@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Dimensions } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import * as Location from "expo-location";
 import { PrayerTimes, CalculationMethod, Madhab } from "adhan";
 import dayjs from "dayjs";
@@ -187,7 +187,7 @@ export default function PrayerTimesComponent() {
         </View>
 
         <Animated.View style={[styles.gradientCard, animatedGradientStyle]}>
-          <LinearGradient colors={animatedColor.value} style={styles.gradientCardContent} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
+          <SafeLinearGradient colors={animatedColor.value || ["#4c669f","#3b5998"]} style={styles.gradientCardContent} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}>
             <Text style={styles.remainingText}>
               {nextWaqt ? `পরবর্তী ওয়াক্ত (${nextWaqt.name}) শুরু হতে বাকি` : 'সময় পাওয়া যায়নি'}
             </Text>
@@ -202,7 +202,7 @@ export default function PrayerTimesComponent() {
                 <Text style={styles.sunInfoText}>সূর্যাস্ত: {sunsetTime ? toBanglaNumber(sunsetTime.format("h:mm A")) : '...'}</Text>
               </View>
             </View>
-          </LinearGradient>
+          </SafeLinearGradient>
         </Animated.View>
 
         <View style={styles.contentRow}>

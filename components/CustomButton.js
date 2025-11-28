@@ -1,18 +1,19 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+
+import SafeLinearGradient from '../components/SafeLinearGradient'
 
 const CustomButton = ({ title, onPress, style }) => {
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={style}>
-      <LinearGradient
-        colors={['#4CAF50', '#8BC34A']} // Customize your gradient colors
+      <SafeLinearGradient
+        colors={['#4CAF50', '#8BC34A'] || ["#4c669f","#3b5998"]} // Customize your gradient colors
         style={styles.buttonGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
       >
         <Text style={styles.buttonText}>{title}</Text>
-      </LinearGradient>
+      </SafeLinearGradient>
     </TouchableOpacity>
   );
 };

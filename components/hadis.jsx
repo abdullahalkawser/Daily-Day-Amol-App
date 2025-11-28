@@ -9,7 +9,7 @@ import {
   Animated,
   Dimensions,
 } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { hadisCategories } from "./hadisData";
@@ -62,8 +62,8 @@ export default function HadisScreen() {
 
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={["#764ba2", "#667eea"]}
+      <SafeLinearGradient
+        colors={["#764ba2", "#667eea"] || ["#4c669f","#3b5998"]}
         style={styles.headerGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -81,7 +81,7 @@ export default function HadisScreen() {
             <View key={i} style={[styles.patternCircle, { opacity: 0.1 + i * 0.05 }]} />
           ))}
         </View>
-      </LinearGradient>
+      </SafeLinearGradient>
 
       <View style={styles.categoriesSection}>
         <Text style={styles.sectionTitle}>হাদিসের বিভাগসমূহ</Text>

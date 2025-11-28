@@ -211,7 +211,7 @@ export default function RamadanAmolsPage({ navigation }) {
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
       <LinearGradient
-        colors={["#34495e", "#2c3e50"]}
+        colors={["#34495e", "#2c3e50"] || ["#4c669f","#3b5998"]}
         style={styles.headerGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -242,7 +242,7 @@ export default function RamadanAmolsPage({ navigation }) {
         {ramadanData.map((category, catIndex) => (
           <LinearGradient
             key={catIndex}
-            colors={[category.color, lightenColor(category.color, 40)]}
+            colors={[category.color, lightenColor(category.color, 40)] || ["#4c669f","#3b5998"]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.categoryCard}

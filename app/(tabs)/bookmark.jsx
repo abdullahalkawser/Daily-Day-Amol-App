@@ -9,52 +9,40 @@ import {
   Pressable,
   SafeAreaView,
   StyleSheet,
-  Text,
-  TextInput,
-  View,
+  Text
 } from 'react-native';
 import surahData from '../../assets/data.json';
-
-
 
 const { width } = Dimensions.get('window');
 const cardWidth = (width - 48) / 2;
 
-export default function QuranApp() {
-  const [selectedSurah, setSelectedSurah] = useState(null);
-  const [searchText, setSearchText] = useState("");
+export default function Favourites() {
   const [favourites, setFavourites] = useState([]);
+  const [selectedSurah, setSelectedSurah] = useState(null);
 
   useEffect(() => {
-    loadData();
+    loadFavourites();
   }, []);
 
-  const loadData = async () => {
+  const loadFavourites = async () => {
     const fav = await AsyncStorage.getItem("favourites");
     if (fav) setFavourites(JSON.parse(fav));
   };
 
   const toggleFavourite = async (id) => {
     let updated = [...favourites];
-
     if (updated.includes(id)) {
       updated = updated.filter((x) => x !== id);
     } else {
       updated.push(id);
     }
-
     setFavourites(updated);
     await AsyncStorage.setItem("favourites", JSON.stringify(updated));
   };
 
-  const filteredSurah = surahData.filter((item) => {
-    const text = searchText.toLowerCase();
-    return (
-      item.name.toLowerCase().includes(text) ||
-      item.transliteration.toLowerCase().includes(text)
-    );
-  });
+  const favouriteSurah = surahData.filter(surah => favourites.includes(surah.id));
 
+  // যদি কোনো সূরা সিলেক্ট করা থাকে, তখন ডিটেইল দেখানো
   if (selectedSurah) {
     const ayahs = selectedSurah.verses;
 
@@ -65,7 +53,7 @@ export default function QuranApp() {
         </Pressable>
 
         <LinearGradient
-          colors={['#63b860', '#1a381a']}
+          colors={['#145214', '#4CAF50']}
           start={[0, 0]}
           end={[1, 1]}
           style={styles.detailHeader}
@@ -107,90 +95,69 @@ export default function QuranApp() {
     );
   }
 
-  // ---------------- SURAH LIST ----------------
+  // ---------------- Favourite List ----------------
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.mainTitle}>❤️ ফেভারিট সূরা</Text>
 
-      {/* Search + Title Combined Card */}
-      <LinearGradient
-        colors={['#0f3d0f', '#1a661a']}
-        start={[0, 0]}
-        end={[1, 1]}
-        style={styles.searchCard}
-      >
-        <Text style={styles.mainTitle}>📖 সূরার তালিকা</Text>
-
-        <View style={styles.searchWrapper}>
-          <Ionicons name="search" size={22} color="#0f0f0fff" />
-          <TextInput
-            placeholder="Search Surah..."
-            placeholderTextColor="#000000ff"
-            style={styles.searchInput}
-            value={searchText}
-            onChangeText={setSearchText}
-          />
-        </View>
-      </LinearGradient>
-
-      {/* Surah List */}
-      <FlatList
-        data={filteredSurah}
-        keyExtractor={(item) => item.id.toString()}
-        numColumns={2}
-        renderItem={({ item }) => {
-          const scale = new Animated.Value(1);
-          return (
-            <Pressable
-              onPress={() => setSelectedSurah(item)}
-              onPressIn={() =>
-                Animated.spring(scale, { toValue: 0.95, useNativeDriver: true }).start()
-              }
-              onPressOut={() =>
-                Animated.spring(scale, { toValue: 1, useNativeDriver: true }).start()
-              }
-              style={{ margin: 8 }}
-            >
-              <Animated.View style={{ transform: [{ scale }] }}>
-                <LinearGradient
-                  colors={['#2acf11ff', '#0f07feff']}
-                  start={[0, 0]}
-                  end={[1, 1]}
-                  style={[styles.surahCard, { width: cardWidth }]}
-                >
-                  <Ionicons name="book" size={36} color="#fff" />
-
-                  <Text numberOfLines={1} style={styles.surahName}>
-                    {item.name}
-                  </Text>
-
-                  <Text numberOfLines={1} style={styles.surahTrans}>
-                    {item.transliteration}
-                  </Text>
-
-                  <Text numberOfLines={1} style={styles.surahInfo}>
-                    {item.type} | আয়াত: {item.total_verses}
-                  </Text>
-
-                  <Pressable onPress={() => toggleFavourite(item.id)}>
-                    <Ionicons
-                      name={favourites.includes(item.id) ? "heart" : "heart-outline"}
-                      size={28}
-                      color="#ffcccc"
-                      style={{ marginTop: 6 }}
-                    />
-                  </Pressable>
-                </LinearGradient>
-              </Animated.View>
-            </Pressable>
-          );
-        }}
-      />
+      {favouriteSurah.length === 0 ? (
+        <Text style={styles.emptyText}>কোনো সূরা ফেভারিট করা হয়নি</Text>
+      ) : (
+        <FlatList
+          data={favouriteSurah}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+          contentContainerStyle={{ paddingBottom: 20 }}
+          renderItem={({ item }) => {
+            const scale = new Animated.Value(1);
+            return (
+              <Pressable
+                onPress={() => setSelectedSurah(item)} // এখানেই সিলেক্ট করা হচ্ছে
+                onPressIn={() =>
+                  Animated.spring(scale, { toValue: 0.95, useNativeDriver: true }).start()
+                }
+                onPressOut={() =>
+                  Animated.spring(scale, { toValue: 1, useNativeDriver: true }).start()
+                }
+                style={{ margin: 8 }}
+              >
+                <Animated.View style={{ transform: [{ scale }] }}>
+                  <LinearGradient
+                    colors={['#46aa46ff', '#212772ff']}
+                    start={[0, 0]}
+                    end={[1, 1]}
+                    style={[styles.surahCard, { width: cardWidth }]}
+                  >
+                    <Ionicons name="book" size={36} color="#fff" />
+                    <Text numberOfLines={1} style={styles.surahName}>
+                      {item.name}
+                    </Text>
+                    <Text numberOfLines={1} style={styles.surahTrans}>
+                      {item.transliteration}
+                    </Text>
+                    <Text numberOfLines={1} style={styles.surahInfo}>
+                      {item.type} | আয়াত: {item.total_verses}
+                    </Text>
+                    <Pressable onPress={() => toggleFavourite(item.id)}>
+                      <Ionicons
+                        name={favourites.includes(item.id) ? "heart" : "heart-outline"}
+                        size={28}
+                        color="#ffcccc"
+                        style={{ marginTop: 6 }}
+                      />
+                    </Pressable>
+                  </LinearGradient>
+                </Animated.View>
+              </Pressable>
+            );
+          }}
+        />
+      )}
     </SafeAreaView>
   );
 }
 
 // ---------------- STYLES ----------------
-
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#1a1a1a', padding: 10 },
 
@@ -199,30 +166,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#00FF00',
     textAlign: 'center',
+    marginVertical: 16,
   },
 
-  searchCard: {
-    padding: 16,
-    borderRadius: 16,
-    marginTop: 30,
-    marginBottom: 20,
-  },
-
-  searchWrapper: {
-    flexDirection: "row",
-    backgroundColor: "#f5ededff",
-    borderRadius: 10,
-    padding: 10,
-    marginTop: 10,
-    alignItems: "center",
-  },
-
-  searchInput: {
-    color: "#000000ff",
-    marginLeft: 10,
-    fontSize: 16,
-    flex: 1,
-  },
+  emptyText: { fontSize: 18, color: '#fff', textAlign: 'center', marginTop: 50 },
 
   surahCard: {
     padding: 16,
@@ -235,11 +182,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  surahName: { fontSize: 20, fontWeight: 'bold', color: '#fff', marginTop: 6 },
-  surahTrans: { fontSize: 14, color: '#eee' },
-  surahInfo: { fontSize: 13, color: '#ccc' },
-
   detailHeader: { padding: 20, borderRadius: 12, marginBottom: 12 },
+
   surahTitle: { fontSize: 28, fontWeight: 'bold', color: '#fff', textAlign: 'center' },
   surahInfoText: { fontSize: 16, color: '#fff', textAlign: 'center' },
 
@@ -254,4 +198,7 @@ const styles = StyleSheet.create({
   numberText: { fontSize: 14, color: '#77ff77' },
 
   backButton: { marginTop: 50, marginBottom: 12 },
+  surahName: { fontSize: 20, fontWeight: 'bold', color: '#fff', marginTop: 6 },
+  surahTrans: { fontSize: 14, color: '#eee' },
+  surahInfo: { fontSize: 13, color: '#ccc' },
 });

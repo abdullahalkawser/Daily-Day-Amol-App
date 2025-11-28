@@ -5,8 +5,8 @@ import { PrayerTimes, CalculationMethod, Madhab, HijriDate } from "adhan";
 import dayjs from "dayjs";
 import durationPlugin from "dayjs/plugin/duration";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { LinearGradient } from 'expo-linear-gradient';
 
+import SafeLinearGradient from '../components/SafeLinearGradient'
 dayjs.extend(durationPlugin);
 
 // বাংলা সংখ্যায় রূপান্তর করার ফাংশন
@@ -204,9 +204,9 @@ export default function PrayerPage() {
         {times.map((p, i) => {
           const isActive = currentWaqt?.name === p.name;
           return (
-            <LinearGradient
+            <SafeLinearGradient
               key={i}
-              colors={isActive ? [p.color, p.color] : rowGradients[i]}
+              colors={isActive ? [p.color, p.color] : rowGradients[i] || ["#4c669f","#3b5998"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
               style={[
@@ -225,7 +225,7 @@ export default function PrayerPage() {
                   {toBanglaNumber(p.startTime.format("hh:mm A"))}
                 </Text>
               </View>
-            </LinearGradient>
+            </SafeLinearGradient>
           );
         })}
       </View>
@@ -237,8 +237,8 @@ export default function PrayerPage() {
           <Text style={styles.prayerHeaderText}>সূর্য</Text>
         </View>
         
-        <LinearGradient
-          colors={['#FEF3C7', '#FDE68A']}
+        <SafeLinearGradient
+          colors={['#FEF3C7', '#FDE68A'] || ["#4c669f","#3b5998"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={[styles.prayerRow, { borderRadius: 12, marginVertical: 4, elevation: 3, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3 }]}
@@ -249,10 +249,10 @@ export default function PrayerPage() {
           <View>
             <Text style={styles.prayerTime}>{toBanglaNumber(times[0]?.endTime?.format("hh:mm A"))}</Text>
           </View>
-        </LinearGradient>
+        </SafeLinearGradient>
 
-        <LinearGradient
-          colors={['#FEE2E2', '#FECACA']}
+        <SafeLinearGradient
+          colors={['#FEE2E2', '#FECACA'] || ["#4c669f","#3b5998"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={[styles.prayerRow, { borderRadius: 12, marginVertical: 4, elevation: 3, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3 }]}
@@ -263,7 +263,7 @@ export default function PrayerPage() {
           <View>
             <Text style={styles.prayerTime}>{toBanglaNumber(times[3]?.startTime?.format("hh:mm A"))}</Text>
           </View>
-        </LinearGradient>
+        </SafeLinearGradient>
       </View>
     </ScrollView>
   );

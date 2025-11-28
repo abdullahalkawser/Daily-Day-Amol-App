@@ -1,8 +1,8 @@
 // app/hadis/index.js
 
-import NamajDetailPage from "../../components/Namj";
+import GhuslRoutinePage from "../../components/amol";
 
 
 export default function Namj() {
-  return <NamajDetailPage />;
+  return <GhuslRoutinePage></GhuslRoutinePage>
 }

@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient';
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const ghuslSteps = [
@@ -46,8 +46,8 @@ const GhuslPage = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <LinearGradient
-        colors={["#4b6cb7", "#182848"]}
+      <SafeLinearGradient
+        colors={["#4b6cb7", "#182848"] || ["#4c669f","#3b5998"]}
         style={styles.headerGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -62,7 +62,7 @@ const GhuslPage = () => {
           </View>
           <Ionicons name="book-sharp" size={40} color="#fff" style={styles.headerIcon} />
         </View>
-      </LinearGradient>
+      </SafeLinearGradient>
 
       {/* DUA CARD AT THE TOP */}
       <View style={[styles.card, {

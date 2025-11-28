@@ -1,19 +1,20 @@
+
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Dimensions,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
   useWindowDimensions,
-  View,
+  View
 } from 'react-native';
 import PrayerPage from "../../components/NamazTime";
 import PrayerTimesComponent from "../../components/PrayerTimesScreen";
+import SafeLinearGradient from '../../components/SafeLinearGradient';
 
 const { width: WINDOW_WIDTH, height: WINDOW_HEIGHT } = Dimensions.get('window');
 const scaleFont = (size) => size * (WINDOW_WIDTH / 375); // Base width for scaling
@@ -71,8 +72,8 @@ const IslamicAppHome = () => {
   const renderHadithSlider = () => (
     <View style={styles.sectionContainer}>
       <Text style={[styles.sectionTitle, { fontSize: scaleFont(20) }]}>আজকের হাদিস</Text>
-      <LinearGradient
-        colors={['#4CAF50', '#2E7D32']}
+      <SafeLinearGradient
+        colors={['#1b54c5ff', '#e21616ff'] || ["#4c669f","#3b5998"]}
         style={[styles.hadithCard, { minHeight: height * 0.2 }]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -84,7 +85,7 @@ const IslamicAppHome = () => {
             <View key={index} style={[styles.dot, index === currentHadithIndex && styles.activeDot]} />
           ))}
         </View>
-      </LinearGradient>
+      </SafeLinearGradient>
     </View>
   );
 
@@ -96,22 +97,22 @@ const IslamicAppHome = () => {
           onPress={() => router.push('/amol')}
           activeOpacity={0.7}
         >
-          <LinearGradient colors={['#20c525ff', '#304b12ff']} style={[styles.quickAccessCard, { height: height * 0.15 }]}>
+          <SafeLinearGradient colors={['#20c525ff', '#b00606ff'] || ["#4c669f","#3b5998"]} style={[styles.quickAccessCard, { height: height * 0.15 }]}>
             <Text style={[styles.quickAccessIcon, { fontSize: scaleFont(35) }]}>🌙</Text>
             <Text style={[styles.quickAccessTitle, { fontSize: scaleFont(16) }]}>সকাল এবং সন্ধ্যার</Text>
             <Text style={[styles.quickAccessSubtitle, { fontSize: scaleFont(12) }]}>সময় ও দোয়া</Text>
-          </LinearGradient>
+          </SafeLinearGradient>
         </TouchableOpacity>
         <TouchableOpacity 
           style={[styles.quickAccessCardWrapper, { width: '48%' }]} 
           onPress={() => router.push('/namj')}
           activeOpacity={0.7}
         >
-          <LinearGradient colors={['#03A9F4', '#2196F3']} style={[styles.quickAccessCard, { height: height * 0.15 }]}>
+          <SafeLinearGradient colors={['#03A9F4', '#10b90aff'] || ["#4c669f","#3b5998"]} style={[styles.quickAccessCard, { height: height * 0.15 }]}>
             <Text style={[styles.quickAccessIcon, { fontSize: scaleFont(35) }]}>⏰</Text>
             <Text style={[styles.quickAccessTitle, { fontSize: scaleFont(16) }]}>আজকের দিনের</Text>
             <Text style={[styles.quickAccessSubtitle, { fontSize: scaleFont(12) }]}>আমল ও দোয়া</Text>
-          </LinearGradient>
+          </SafeLinearGradient>
         </TouchableOpacity>
       </View>
     </View>
@@ -182,7 +183,14 @@ const IslamicAppHome = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="#0dcd0dff" barStyle="light-content" />
+     
+         <LinearGradient
+                  colors={['#6bb039ff', '#39a72bff', '#703fecff']}
+                  start={[0, 0]}
+                  end={[1, 1]}
+                   style={styles.header}     
+                 
+                >
       <View style={[styles.header, { paddingTop: height * 0.07 }]}>
         <Text style={[styles.greeting, { fontSize: scaleFont(18) }]}>আসসালামু আলাইকুম</Text>
         <Text style={[styles.userName, { fontSize: scaleFont(28) }]}>{userName}</Text>
@@ -190,16 +198,19 @@ const IslamicAppHome = () => {
           {new Date().toLocaleDateString('bn-BD', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
         </Text>
       </View>
+
+      </LinearGradient>
       <ScrollView 
         style={styles.scrollView} 
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: height * 0.1 }}
       >
+              {renderHadithSlider()}
         {renderPrayerTimes()}
         {renderQuickAccess()}
         {renderAppSections()}
         {renderSunnahSection()}
-        {renderHadithSlider()}
+  
       </ScrollView>
     </SafeAreaView>
   );
@@ -208,11 +219,11 @@ const IslamicAppHome = () => {
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
-    backgroundColor: '#F5F5F5', 
-    marginBottom: '10%'
+    backgroundColor: '#1e1c1cff', 
+   
   },
   header: {
-    backgroundColor: '#1ac922ff',
+    // backgroundColor: '#339438ff',
     paddingBottom: '5%',
     paddingHorizontal: '5%',
     borderBottomLeftRadius: 30,

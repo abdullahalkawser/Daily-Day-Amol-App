@@ -1,5 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+import SafeLinearGradient from '../components/SafeLinearGradient'
 import { useState } from 'react';
 import { FlatList, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
@@ -153,8 +153,8 @@ export default function ArabicLearningPage({ navigation }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <LinearGradient
-        colors={["#34495e", "#2c3e50"]}
+      <SafeLinearGradient
+        colors={["#34495e", "#2c3e50"] || ["#4c669f","#3b5998"]}
         style={styles.headerGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -170,7 +170,7 @@ export default function ArabicLearningPage({ navigation }) {
           </View>
           <Ionicons name="language" size={40} color="#fff" style={styles.headerIcon} />
         </View>
-      </LinearGradient>
+      </SafeLinearGradient>
 
       <ScrollView style={styles.scrollView}>
         {arabicData.map((category, catIndex) => (
